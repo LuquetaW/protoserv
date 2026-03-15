@@ -24,3 +24,6 @@ Responsável pela interface do sistema e experiência do usuário.
 Responsável por testes funcionais, validação e garantia de qualidade.
 ● Documentador:
 Responsável pela documentação técnica e manual do usuário.
+
+Design no Figma
+https://www.figma.com/design/T4mb5LOStDgZTJ8vZPiDCr/Sem-t%C3%ADtulo?node-id=0-1&t=AeuNn2eAbLPYc5r9-1
