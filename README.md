@@ -27,3 +27,6 @@ Responsável pela documentação técnica e manual do usuário.
 
 Design no Figma
 https://www.figma.com/design/pCxmpGaJld5fQ8SSWkifQu/Layout-Projetp?node-id=0-1&t=6xnH79asLDjx1iRa-1
+
+link 2: 
+https://www.figma.com/design/T4mb5LOStDgZTJ8vZPiDCr/Sem-t%C3%ADtulo?node-id=0-1&t=S6cqAvMtwWTCpqZQ-0
