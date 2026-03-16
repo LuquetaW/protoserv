@@ -26,4 +26,4 @@ Responsável por testes funcionais, validação e garantia de qualidade.
 Responsável pela documentação técnica e manual do usuário.
 
 Design no Figma
-https://www.figma.com/design/pCxmpGaJld5fQ8SSWkifQu/Layout-Projetp?node-id=0-1&t=oq3Sc6g6GcOstOGI-1
+https://www.figma.com/design/pCxmpGaJld5fQ8SSWkifQu/Layout-Projetp?node-id=0-1&t=6xnH79asLDjx1iRa-1
