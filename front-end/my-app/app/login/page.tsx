@@ -17,7 +17,7 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex flex-col min-h-screen items-center justify-center bg-gray-500 p-4">
+    <main className="flex flex-col min-h-screen items-center bg-gray-500 p-4">
       <Logo />
       
       <div className="w-full max-w-sm flex flex-col gap-6 bg-white p-8 rounded-xl shadow-lg">
