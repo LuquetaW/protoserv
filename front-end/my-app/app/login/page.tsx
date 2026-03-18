@@ -4,6 +4,7 @@ import { useState } from "react";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
 import Logo from "@/components/Logo";
+import Link from "next/link";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -43,6 +44,12 @@ export default function LoginPage() {
 
           <Button label="Acessar" type="submit" />
         </form>
+
+        <Link href={"/register"}>
+          <Button 
+          label="Quero me cadastrar"
+        />
+        </Link>        
       </div>
     </main>
   );

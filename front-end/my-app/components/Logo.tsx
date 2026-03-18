@@ -1,10 +1,15 @@
+import Image from "next/image";
+
 export default function Logo() {
   return (
     <div className="flex justify-center w-full py-6">
-      <p className="text-4xl font-extrabold tracking-tighter">
-        <span className="text-blue-700">PROTO</span>
-        <span className="text-gray-100">SERV</span>
-      </p>
+      <Image 
+        src="/img/LogoProtoServ.png"
+        alt="Logo ProtoServ"
+        width={400} //prré carregamento
+        height={300}
+        className="w-[400px] h-auto object-contain"
+      />
     </div>
   );
 }
