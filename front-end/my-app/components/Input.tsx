@@ -21,7 +21,7 @@ export default function Input({
       <label className="text-sm font-medium text-gray-700">
         {label}
       </label>
-
+  
       <input
         type={type}
         value={value}           // mostra o que está na variável 'value'
