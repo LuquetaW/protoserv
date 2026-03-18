@@ -28,7 +28,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className= "flex flex-col justify-center items-center min-h-screen bg-gray-500 p-4">
+    <main className= "flex flex-col items-center min-h-screen bg-gray-500 p-4">
       <Logo />
 
       <div className="w-full max-w-sm flex flex-col gap-6 bg-white! p-8 rounded-xl shadow-lg">
