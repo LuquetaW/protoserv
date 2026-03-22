@@ -1,14 +1,20 @@
 import Image from "next/image";
 
-export default function Logo() {
+interface LogoProps {
+  className?: string;
+}
+
+export default function Logo({
+  className = "w-[250px]"
+}: LogoProps) {
   return (
-    <div className="flex justify-center w-full py-6">
+    <div className="flex">
       <Image 
         src="/img/LogoProtoServ.png"
         alt="Logo ProtoServ"
-        width={400} //prré carregamento
+        width={400}
         height={300}
-        className="w-[400px] h-auto object-contain"
+        className={className} // Aplica a classe passada via prop
       />
     </div>
   );
