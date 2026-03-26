@@ -1,98 +1,162 @@
 "use client";
 
-import Button from "@/components/Button";
+import Bot from "@/components/bot";
 import Footer from "@/components/Footer";
 import Logo from "@/components/Logo";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function Home() {
-  // dados sinmulados
   const USER_LOGIN = "José da Silva";
-  const [opcao, setOpcao] = useState("");
+
+  const [abrir, setAbrir] = useState(false);
+  const [suporte, setSuporte] = useState(false);
 
   return (
-    <main className="flex flex-col h-screen bg-gray-500">
+    <main className="flex h-screen bg-gray-900">
       
-      {/* Barra de navegação principal */}
-      <header className="w-full bg-white shadow-sm border-b border-gray-100 px-6 py-2">
-        <div className="flex items-center justify-between mx-auto px-1">
-          <Logo className="max-w-20 py-3" />
-
-          {/* Links de navegação interna */}
-          <nav className="flex items-center gap-6 text-gray-700">
-            <Link href="/" className="font-semibold text-blue-600">Home</Link>
-            <Link href="/servicos" className="hover:text-blue-600 transition">Serviços</Link>
-            <Link href="/perfil" className="hover:text-blue-600 transition">Perfil</Link>
-          </nav>
-
-          {/* id e botão de logout */}
-          <div className="flex flex-row items-center gap-4">
-            <p className="text-gray-700 font-medium hidden sm:block">
-              Olá, {USER_LOGIN}!
-            </p>
-            <button className="bg-gray-800 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-red-700 transition shadow-sm">
-              Sair
-            </button>
-          </div>
+      {/* SIDEBAR */}
+      <aside className="w-64 bg-gray-800 flex flex-col p-6 text-white">
+        <div className="mb-10">
+          <Logo className="max-w-24" />
         </div>
-      </header>
 
-      {/* central */}
-      <div className="flex-1 p-8 flex flex-col items-center justify-center">
+        <nav className="flex flex-col gap-3">
+          <Link href="/" className="bg-blue-600 px-4 py-2 rounded-lg font-semibold">
+            Home
+          </Link>
+          <Link href="/servicos" className="px-4 py-2 rounded-lg hover:bg-gray-700 transition">
+            Serviços
+          </Link>
+          <Link href="/perfil" className="px-4 py-2 rounded-lg hover:bg-gray-700 transition">
+            Perfil
+          </Link>
+        </nav>
+
+        <div className="mt-auto">
+          <p className="text-gray-400 text-sm mb-2">{USER_LOGIN}</p>
+          <button className="w-full bg-red-600 py-2 rounded-lg hover:bg-red-700 transition">
+            Sair
+          </button>
+        </div>
+      </aside>
+
+      {/* CONTEÚDO */}
+      <div className="flex-1 flex flex-col bg-gray-100">
         
-        {/* container principal de toda interface do painel */}
-        <div className="bg-white border border-gray-200 rounded-3xl p-10 shadow-2xl h-[80%] w-full max-w-3xl flex flex-col">
+        {/* HEADER */}
+        <header className="bg-white px-8 py-4 border-b border-gray-200">
+          <h1 className="text-2xl font-bold text-gray-800">
+            Painel de Serviços
+          </h1>
+        </header>
+
+        {/* CONTEÚDO CENTRAL */}
+        <div className="flex-1 flex flex-col items-center justify-center p-8">
           
-          <div className="flex-1">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Painel de Serviços
-            </h1>
-            <p className="text-gray-400 mb-8 border-b pb-5">
-              Bem-vindo ao sistema Protoserv. Selecione uma ação abaixo para continuar.
+          <div className="w-full max-w-5xl">
+            
+            <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+              O que você deseja fazer?
+            </h2>
+
+            <p className="text-gray-600 mb-8">
+              Escolha uma das opções abaixo para continuar
             </p>
 
-            <div className="flex flex-col bg-amber-500 w-full rounded-2xl p-8 text-amber-950 font-medium shadow-lg">
-              <label className="mb-4 block text-lg font-bold">
-                O que você deseja fazer?
-              </label>
+            <div className="grid grid-cols-3 gap-6">
 
-              {/* select de opções*/}
-              <div className="relative w-full max-w-md">
-                <select
-                  value={opcao}
-                  onChange={(e) => setOpcao(e.target.value)}
-                  className="block w-full appearance-none bg-white border-none text-gray-700 py-4 px-6 pr-12 rounded-xl leading-tight focus:ring-4 focus:ring-amber-600/50 outline-none cursor-pointer shadow-sm font-bold transition-all"
-                >
-                  <option value="">Selecione uma opção...</option>
-                  <option value="abrir">Abrir um protocolo</option>
-                  <option value="acompanhar">Acompanhar protocolo aberto</option>
-                  <option value="suporte">Pedido de suporte</option>
-                </select>
-
-                {/* Seta visual do select */}
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
-                  <svg className="h-6 w-6 fill-current" viewBox="0 0 20 20">
-                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                  </svg>
-                </div>
+              {/* ABRIR PROTOCOLO */}
+              <div
+                onClick={() => {
+                  setAbrir(!abrir);
+                  setSuporte(false);
+                }}
+                className="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition cursor-pointer"
+              >
+                <h3 className="text-lg font-bold mb-2">
+                  Abrir Protocolo
+                </h3>
+                <p className="text-sm opacity-90">
+                  Registrar uma nova solicitação
+                </p>
               </div>
 
-              {/* botão de confirmação só aparece quando o usuário escolhe algo no select */}
-              {opcao && (
-                <div className="animate-in fade-in slide-in-from-top-4 duration-500">
-                  <Button
-                    label="Confirmar Seleção"
-                    className="mt-6 w-full max-w-md bg-amber-950 text-white py-4 rounded-xl font-bold hover:bg-black shadow-xl"
-                    onClick={() => alert(`selecionado opção: ${opcao}`)}
-                  />
-                </div>
-              )}
-            </div>
-          </div>
+              {/* ACOMPANHAR */}
+              <div className="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition cursor-pointer">
+                <h3 className="text-lg font-bold mb-2">
+                  Acompanhar
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  Ver andamento do seu protocolo
+                </p>
+              </div>
 
-          <Footer />
+              {/* SUPORTE */}
+              <div
+                onClick={() => {
+                  setSuporte(!suporte);
+                  setAbrir(false);
+                }}
+                className="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition cursor-pointer"
+              >
+                <h3 className="text-lg font-bold mb-2">
+                  Suporte
+                </h3>
+                <p className="text-gray-500 text-sm">
+                  Solicitar ajuda ou atendimento
+                </p>
+              </div>
+
+            </div>
+
+            {/* FORMULÁRIO ABRIR PROTOCOLO */}
+            {abrir && (
+              <div className="mt-8 bg-white p-8 rounded-xl shadow-lg border border-gray-200 animate-in fade-in slide-in-from-top-4">
+                
+                <h3 className="text-xl font-bold text-gray-800 mb-6">
+                  Novo Protocolo
+                </h3>
+
+                <div className="flex flex-col gap-4">
+
+                  <input
+                    type="text"
+                    placeholder="Título do problema"
+                    className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                  />
+
+                  <select className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    <option>Selecione o tipo de serviço</option>
+                    <option>Iluminação</option>
+                    <option>Coleta</option>
+                    <option>Infraestrutura</option>
+                  </select>
+
+                  <textarea
+                    placeholder="Descreva o problema..."
+                    className="border border-gray-300 p-3 rounded-lg h-28 resize-none focus:ring-2 focus:ring-blue-500 outline-none"
+                  />
+
+                  <button className="bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
+                    Enviar Protocolo
+                  </button>
+
+                </div>
+              </div>
+            )}
+
+            {/* BOT DE SUPORTE */}
+            {suporte && (
+              <div className="mt-8">
+                <Bot />
+              </div>
+            )}
+
+          </div>
         </div>
+
+        <Footer />
       </div>
     </main>
   );
