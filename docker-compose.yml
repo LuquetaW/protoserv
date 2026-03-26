@@ -1,0 +1,32 @@
+services:
+  # Banco de Dados MySQL
+  db:
+    image: mysql:8.0
+    container_name: protoserv-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: protoserv_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: protoserv
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  # Aplicação Front-end
+  web:
+    build:
+      context: ./front-end/my-app
+      dockerfile: Dockerfile
+    container_name: protoserv-web
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=mysql://user_protoserv:password_aqui@db:3306/protoserv_db
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
