@@ -5,12 +5,13 @@ import Footer from "@/components/Footer";
 import Logo from "@/components/Logo";
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // ✅ ADICIONADO
 
 export default function Home() {
   const USER_LOGIN = "José da Silva";
 
-  const [abrir, setAbrir] = useState(false);
   const [suporte, setSuporte] = useState(false);
+  const router = useRouter(); // ✅ ADICIONADO
 
   return (
     <main className="flex h-screen bg-gray-900">
@@ -27,6 +28,9 @@ export default function Home() {
           </Link>
           <Link href="/servicos" className="px-4 py-2 rounded-lg hover:bg-gray-700 transition">
             Serviços
+          </Link>
+          <Link href="/protocolos" className="px-4 py-2 rounded-lg hover:bg-gray-700 transition">
+          Protocolos
           </Link>
           <Link href="/perfil" className="px-4 py-2 rounded-lg hover:bg-gray-700 transition">
             Perfil
@@ -66,38 +70,33 @@ export default function Home() {
 
             <div className="grid grid-cols-3 gap-6">
 
-              {/* ABRIR PROTOCOLO */}
+              {/* ✅ SOLICITAR SERVIÇO */}
               <div
-                onClick={() => {
-                  setAbrir(!abrir);
-                  setSuporte(false);
-                }}
+                onClick={() => router.push("/servicos")}
                 className="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition cursor-pointer"
               >
                 <h3 className="text-lg font-bold mb-2">
-                  Abrir Protocolo
+                  Solicitar Serviço
                 </h3>
                 <p className="text-sm opacity-90">
-                  Registrar uma nova solicitação
+                  Escolher e registrar uma solicitação
                 </p>
               </div>
 
               {/* ACOMPANHAR */}
-              <div className="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition cursor-pointer">
+              <div
+                onClick={() => router.push("/protocolos")}
+                className="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition cursor-pointer">
                 <h3 className="text-lg font-bold mb-2">
                   Acompanhar
                 </h3>
-                <p className="text-gray-500 text-sm">
+                <p className="text-sm opacity-90">
                   Ver andamento do seu protocolo
                 </p>
               </div>
-
               {/* SUPORTE */}
               <div
-                onClick={() => {
-                  setSuporte(!suporte);
-                  setAbrir(false);
-                }}
+                onClick={() => setSuporte(!suporte)}
                 className="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition cursor-pointer"
               >
                 <h3 className="text-lg font-bold mb-2">
@@ -109,42 +108,6 @@ export default function Home() {
               </div>
 
             </div>
-
-            {/* FORMULÁRIO ABRIR PROTOCOLO */}
-            {abrir && (
-              <div className="mt-8 bg-white p-8 rounded-xl shadow-lg border border-gray-200 animate-in fade-in slide-in-from-top-4">
-                
-                <h3 className="text-xl font-bold text-gray-800 mb-6">
-                  Novo Protocolo
-                </h3>
-
-                <div className="flex flex-col gap-4">
-
-                  <input
-                    type="text"
-                    placeholder="Título do problema"
-                    className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-                  />
-
-                  <select className="border border-gray-300 p-3 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-                    <option>Selecione o tipo de serviço</option>
-                    <option>Iluminação</option>
-                    <option>Coleta</option>
-                    <option>Infraestrutura</option>
-                  </select>
-
-                  <textarea
-                    placeholder="Descreva o problema..."
-                    className="border border-gray-300 p-3 rounded-lg h-28 resize-none focus:ring-2 focus:ring-blue-500 outline-none"
-                  />
-
-                  <button className="bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
-                    Enviar Protocolo
-                  </button>
-
-                </div>
-              </div>
-            )}
 
             {/* BOT DE SUPORTE */}
             {suporte && (
