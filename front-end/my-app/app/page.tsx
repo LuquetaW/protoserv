@@ -5,13 +5,13 @@ import Footer from "@/components/Footer";
 import Logo from "@/components/Logo";
 import Link from "next/link";
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // ✅ ADICIONADO
+import { useRouter } from "next/navigation"; //  ADICIONADO
 
 export default function Home() {
   const USER_LOGIN = "José da Silva";
 
   const [suporte, setSuporte] = useState(false);
-  const router = useRouter(); // ✅ ADICIONADO
+  const router = useRouter(); //  ADICIONADO
 
   return (
     <main className="flex h-screen bg-gray-900">
@@ -70,7 +70,7 @@ export default function Home() {
 
             <div className="grid grid-cols-3 gap-6">
 
-              {/* ✅ SOLICITAR SERVIÇO */}
+              {/*  SOLICITAR SERVIÇO */}
               <div
                 onClick={() => router.push("/servicos")}
                 className="bg-gradient-to-br from-blue-500 to-blue-700 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition cursor-pointer"
